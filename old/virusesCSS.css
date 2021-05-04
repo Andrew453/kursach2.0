@@ -1,0 +1,70 @@
+title {
+font-size: 50px;	
+}
+
+body {
+   color: SaddleBrown;  
+   font-size: 18px;
+    background-image: url("https://kartinkinaden.ru/uploads/posts/2020-07/1595714720_49-p-svetlo-bezhevie-foni-56.jpg");
+}
+
+h1 {
+color: SaddleBrown;
+  font-family:fantasy;
+  font-size:40px;
+  line-height: normal;
+}
+
+h2 {
+  font-size: 20px;
+  line-height: normal;
+}
+
+a { 
+color: SaddleBrown; 
+background:0;
+text-decoration: none;
+}
+
+p {
+font-size: 30px;
+text-align: center;
+	
+}
+ 
+
+pre {
+	background-image: url("https://poligrafiya-onyx.ru/wp-content/uploads/2020/07/wood-texture_123.jpg");
+	padding-top:30;
+	padding-bottom:30px;
+	
+	
+}
+dd {
+	padding-top:15px;
+	padding-bottom:15px;
+	line-height: normal
+}
+.panel { 
+color: BlanchedAlmond; 
+Background:0;
+font-size: 18px;
+
+
+}
+.avatar {
+  border-radius: 50%;
+}
+
+.fstImgCont{
+	text-align: right;
+	vertical-align:middle;
+}
+
+.blog-navigation {
+  margin-bottom: 30px;
+  padding: 20px;
+
+  color: #ffffff;
+  
+}

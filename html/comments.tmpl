@@ -1,0 +1,9 @@
+{{define comments}}
+    <div class="comments">
+        <p></p><font color=blue>{{ .Nickname }}</font> <font color=gray size=2px>&#8226;{{ .Time }}</font>
+        <ul>
+            {{ .Comment }}
+        </ul>
+    </div>
+
+{{end}}
