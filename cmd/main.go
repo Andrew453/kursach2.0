@@ -29,19 +29,10 @@ func main() {
 		infoLog:  infoLog,
 	}
 
-	fileServer := http.FileServer(http.Dir("./css"))
-
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", app.home)
-	mux.HandleFunc("/about", app.about)
-	mux.HandleFunc("/sources", app.about)
-
-	mux.Handle("/css/", http.StripPrefix("/css", fileServer))
-
 	srv := &http.Server{
 		Addr:     *addr,
 		ErrorLog: errorLog,
-		Handler:  mux,
+		Handler:  app.routes(),
 	}
 
 	infoLog.Println("Start server 127.0.0.1", *addr)

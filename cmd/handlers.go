@@ -12,7 +12,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	}
 
 	files := []string{
-		"/home/prokiprok/go/src/kursach/html/home_page.html",
+		"/home/prokiprok/go/src/kusrach2.0/html/home_page.html",
 	}
 
 	ts, err := template.ParseFiles(files...)
@@ -36,7 +36,7 @@ func (app *application) about(w http.ResponseWriter, r *http.Request) {
 	}
 
 	files := []string{
-		"/home/prokiprok/go/src/kursach/html/about.html",
+		"/home/prokiprok/go/src/kursach20/html/about.html",
 	}
 
 	ts, err := template.ParseFiles(files...)
@@ -60,7 +60,7 @@ func (app *application) sources(w http.ResponseWriter, r *http.Request) {
 	}
 
 	files := []string{
-		"/home/prokiprok/go/src/kursach/html/sources.html",
+		"/home/prokiprok/go/src/kursach20/html/sources.html",
 	}
 
 	ts, err := template.ParseFiles(files...)
