@@ -7,7 +7,7 @@ func (app *application) routes() *http.ServeMux {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", app.home)
 	mux.HandleFunc("/about", app.about)
-	mux.HandleFunc("/sources", app.about)
+	mux.HandleFunc("/sources", app.sources)
 
 	fileServer := http.FileServer(http.Dir("./css"))
 

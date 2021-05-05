@@ -45,7 +45,7 @@ func (app *application) about(w http.ResponseWriter, r *http.Request) {
 	}
 
 	files := []string{
-		"/home/prokiprok/go/src/kursach20/html/about.html",
+		"/home/prokiprok/go/src/kursach2.0/html/about.html",
 	}
 
 	ts, err := template.ParseFiles(files...)
@@ -69,7 +69,7 @@ func (app *application) sources(w http.ResponseWriter, r *http.Request) {
 	}
 
 	files := []string{
-		"/home/prokiprok/go/src/kursach20/html/sources.html",
+		"/home/prokiprok/go/src/kursach2.0/html/sources.html",
 	}
 
 	ts, err := template.ParseFiles(files...)
