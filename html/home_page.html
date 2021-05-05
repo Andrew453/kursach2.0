@@ -1,3 +1,6 @@
+{{define "comments"}}
+
+<!doctype html>
 <html lang = "ru"> 
 
     <head>
@@ -103,8 +106,8 @@
 
         <section>
             <form name="comment" action="../cmd/handlers.go" method="post">
-                <p></p>Комментарии:<p></p>
-
+                    <p></p><b><font size=4px>Комментарии</font></b><p></p>
+                    <div class="yourcomment">
                 Ваше имя:<p></p>
                 <input type="text" size=40>
 
@@ -116,12 +119,27 @@
             </form>
         </section>
 
+        Пример комментария для Андрея by Артём
+
         <section>
-            //Тут должны быть комментарии//
+            <div class="comments"
+                <p></p><font color=blue>{{.Title}}</font> <font color=gray size=2px>{{.ID}}</font>
+                <ul>
+                    {{.Content}}
+                </ul>
+                <div class="probel"></div>
+            </div>
+        </section>
+
+
         </div>
 
         <footer>
             © 2021-2021 Артём Артёмов, по всем вопросам пишите по адресу artyomovas@student.bmstu.ru
         </footer>
+
+    </div>
     </body>
 </html>
+
+{{end}}
