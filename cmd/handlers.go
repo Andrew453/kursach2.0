@@ -10,19 +10,28 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 		app.notFound(w)
 		return
 	}
+	// comms, err := app.comments.Latest()
+	// if err != nil {
+	// 	app.serverError(w, err)
+	// 	return
+	// }
 
-	files := []string{
-		"/home/prokiprok/go/src/kusrach2.0/html/home_page.html",
-	}
+	file := "/home/prokiprok/go/src/kursach2.0/html/home_page.html"
 
-	ts, err := template.ParseFiles(files...)
+	// ts, err := template.ParseFiles(file)
 
+	// if err != nil {
+	// 	app.serverError(w, err)
+	// 	return
+	// }
+
+	tmpl, err := template.ParseFiles(file)
 	if err != nil {
-		app.serverError(w, err)
-		return
+		app.errorLog.Fatalln(err)
 	}
-
-	err = ts.Execute(w, nil)
+	// err = tmpl.ExecuteTemplate(w, "comments", comms)
+	err = tmpl.Execute(w, nil)
+	// err = ts.Execute(w, nil)
 
 	if err != nil {
 		app.serverError(w, err)
