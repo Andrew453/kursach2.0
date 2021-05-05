@@ -10,11 +10,11 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 		app.notFound(w)
 		return
 	}
-	// comms, err := app.comments.Latest()
-	// if err != nil {
-	// 	app.serverError(w, err)
-	// 	return
-	// }
+	comms, err := app.comments.Latest()
+	if err != nil {
+		app.serverError(w, err)
+		return
+	}
 
 	file := "/home/prokiprok/go/src/kursach2.0/html/home_page.html"
 
@@ -29,8 +29,8 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		app.errorLog.Fatalln(err)
 	}
-	// err = tmpl.ExecuteTemplate(w, "comments", comms)
-	err = tmpl.Execute(w, nil)
+	err = tmpl.ExecuteTemplate(w, "comments", comms)
+	// err = tmpl.Execute(w, nil)
 	// err = ts.Execute(w, nil)
 
 	if err != nil {

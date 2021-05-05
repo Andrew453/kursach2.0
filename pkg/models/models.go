@@ -7,7 +7,7 @@ import (
 
 var ErrNoRecord = errors.New("models: подходящей записи не найдено")
 
-type Snippet struct {
+type Comment struct {
 	ID      int
 	Title   string
 	Content string

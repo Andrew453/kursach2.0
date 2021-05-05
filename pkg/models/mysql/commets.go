@@ -47,7 +47,7 @@ func (m *CommentModel) Insert(title, content, expires string) (int, error) {
 }
 
 // Get - Метод для возвращения данных заметки по её идентификатору ID.
-func (m *CommentModel) Get(id int) (*models.Snippet, error) {
+func (m *CommentModel) Get(id int) (*models.Comment, error) {
 	// SQL запрос для получения данных одной записи.
 	stmt := `SELECT id, title, content, created, expires FROM snippets
     WHERE expires > UTC_TIMESTAMP() AND id = ?`
@@ -58,7 +58,7 @@ func (m *CommentModel) Get(id int) (*models.Snippet, error) {
 	row := m.DB.QueryRow(stmt, id)
 
 	// Инициализируем указатель на новую структуру Snippet.
-	s := &models.Snippet{}
+	s := &models.Comment{}
 
 	// Используйте row.Scan(), чтобы скопировать значения из каждого поля от sql.Row в
 	// соответствующее поле в структуре Snippet. Обратите внимание, что аргументы
@@ -82,7 +82,7 @@ func (m *CommentModel) Get(id int) (*models.Snippet, error) {
 }
 
 // Latest - Метод возвращает последние 10 заметок.
-func (m *CommentModel) Latest() ([]*models.Snippet, error) {
+func (m *CommentModel) Latest() ([]*models.Comment, error) {
 	// Пишем SQL запрос, который мы хотим выполнить.
 	stmt := `SELECT id, title, content, created, expires FROM snippets
     WHERE expires > UTC_TIMESTAMP() ORDER BY created DESC LIMIT 10`
@@ -102,14 +102,14 @@ func (m *CommentModel) Latest() ([]*models.Snippet, error) {
 	defer rows.Close()
 
 	// Инициализируем пустой срез для хранения объектов models.Snippets.
-	var snippets []*models.Snippet
+	var snippets []*models.Comment
 
 	// Используем rows.Next() для перебора результата. Этот метод предоставляем
 	// первый а затем каждую следующею запись из базы данных для обработки
 	// методом rows.Scan().
 	for rows.Next() {
 		// Создаем указатель на новую структуру Snippet
-		s := &models.Snippet{}
+		s := &models.Comment{}
 		// Используем rows.Scan(), чтобы скопировать значения полей в структуру.
 		// Опять же, аргументы предоставленные в row.Scan()
 		// должны быть указателями на место, куда требуется скопировать данные и

@@ -20,7 +20,7 @@ type application struct {
 
 func main() {
 	addr := flag.String("addr", ":7777", "Web server address")
-	dsn := flag.String("dsn", "web:qwerty@/snippetbox?parseTime=true", "Название MySQL источника данных")
+	dsn := flag.String("dsn", "web:qwerty@/snippetbox?parseTime=true", "snippetbox")
 	flag.Parse()
 
 	f, err := os.OpenFile("info.log", os.O_RDWR|os.O_CREATE, 0666)
@@ -41,6 +41,7 @@ func main() {
 	app := &application{
 		errorLog: errorLog,
 		infoLog:  infoLog,
+		comments: &mysql.CommentModel{DB: db},
 	}
 
 	srv := &http.Server{
