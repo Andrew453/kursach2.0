@@ -20,7 +20,7 @@ type application struct {
 
 func main() {
 	addr := flag.String("addr", ":7777", "Web server address")
-	dsn := flag.String("dsn", "web:qwerty@/snippetbox?parseTime=true", "snippetbox")
+	dsn := flag.String("dsn", "web:qwerty@/commentsbox?parseTime=true", "commentsbox")
 	flag.Parse()
 
 	f, err := os.OpenFile("info.log", os.O_RDWR|os.O_CREATE, 0666)

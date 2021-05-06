@@ -11,9 +11,9 @@
     <body>
 
         <div class="topnav">
-            <a class="active" href="home_page.html"><font color=black>Cyber</font><font color=white>Putinka</font></a>
-            <a href="sources.html">Ссылки на источники</a>
-            <a href="about.html">О нас</a>
+            <a class="active" href="h"><font color=black>Cyber</font><font color=white>Putinka</font></a>
+            <a href="sources">Ссылки на источники</a>
+            <a href="about">О нас</a>
         </div>
 
         <div class="sidenav">
@@ -120,17 +120,18 @@
         </section>
 
         Пример комментария для Андрея by Артём
-
+        {{ range .}}
         <section>
-            <div class="comments"
-                <p></p><font color=blue>{{.Title}}</font> <font color=gray size=2px>{{.ID}}</font>
+            
+            <div class="comments">
+                <p></p><font color=blue>{{.UserName}}</font> <font color=gray size=2px>{{.ID}}</font>
                 <ul>
                     {{.Content}}
                 </ul>
                 <div class="probel"></div>
             </div>
         </section>
-
+        {{end}}
 
         </div>
 
