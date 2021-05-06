@@ -8,9 +8,8 @@ import (
 var ErrNoRecord = errors.New("models: подходящей записи не найдено")
 
 type Comment struct {
-	ID      int
-	Title   string
-	Content string
-	Created time.Time
-	Expires time.Time
+	ID       int
+	UserName string
+	Content  string
+	Created  time.Time
 }

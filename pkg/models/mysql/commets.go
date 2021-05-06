@@ -17,19 +17,19 @@ type CommentModel struct {
 }
 
 // Insert - Метод для создания новой заметки в базе дынных.
-func (m *CommentModel) Insert(title, content, expires string) (int, error) {
+func (m *CommentModel) Insert(username, content string) (int, error) {
 	// Ниже будет SQL запрос, который мы хотим выполнить. Мы разделили его на две строки
 	// для удобства чтения (поэтому он окружен обратными кавычками
 	// вместо обычных двойных кавычек).
-	stmt := `INSERT INTO snippets (title, content, created, expires)
-    VALUES(?, ?, UTC_TIMESTAMP(), DATE_ADD(UTC_TIMESTAMP(), INTERVAL ? DAY))`
+	stmt := `INSERT INTO comments (username, content, created)
+    VALUES(?, ?, UTC_TIMESTAMP())`
 
 	// Используем метод Exec() из встроенного пула подключений для выполнения
 	// запроса. Первый параметр это сам SQL запрос, за которым следует
 	// заголовок заметки, содержимое и срока жизни заметки. Этот
 	// метод возвращает объект sql.Result, который содержит некоторые основные
 	// данные о том, что произошло после выполнении запроса.
-	result, err := m.DB.Exec(stmt, title, content, expires)
+	result, err := m.DB.Exec(stmt, username, content)
 	if err != nil {
 		return 0, err
 	}
@@ -49,8 +49,8 @@ func (m *CommentModel) Insert(title, content, expires string) (int, error) {
 // Get - Метод для возвращения данных заметки по её идентификатору ID.
 func (m *CommentModel) Get(id int) (*models.Comment, error) {
 	// SQL запрос для получения данных одной записи.
-	stmt := `SELECT id, title, content, created, expires FROM snippets
-    WHERE expires > UTC_TIMESTAMP() AND id = ?`
+	stmt := `SELECT id, username, content, created FROM snippets
+    WHERE id = ?`
 
 	// Используем метод QueryRow() для выполнения SQL запроса,
 	// передавая ненадежную переменную id в качестве значения для плейсхолдера
@@ -65,7 +65,7 @@ func (m *CommentModel) Get(id int) (*models.Comment, error) {
 	// для row.Scan - это указатели на место, куда требуется скопировать данные
 	// и количество аргументов должно быть точно таким же, как количество
 	// столбцов в таблице базы данных.
-	err := row.Scan(&s.ID, &s.Title, &s.Content, &s.Created, &s.Expires)
+	err := row.Scan(&s.ID, &s.UserName, &s.Content, &s.Created)
 	if err != nil {
 		// Специально для этого случая, мы проверим при помощи функции errors.Is()
 		// если запрос был выполнен с ошибкой. Если ошибка обнаружена, то
@@ -84,8 +84,7 @@ func (m *CommentModel) Get(id int) (*models.Comment, error) {
 // Latest - Метод возвращает последние 10 заметок.
 func (m *CommentModel) Latest() ([]*models.Comment, error) {
 	// Пишем SQL запрос, который мы хотим выполнить.
-	stmt := `SELECT id, title, content, created, expires FROM snippets
-    WHERE expires > UTC_TIMESTAMP() ORDER BY created DESC LIMIT 10`
+	stmt := `SELECT id, username, content, created FROM comments`
 
 	// Используем метод Query() для выполнения нашего SQL запроса.
 	// В ответ мы получим sql.Rows, который содержит результат нашего запроса.
@@ -115,7 +114,7 @@ func (m *CommentModel) Latest() ([]*models.Comment, error) {
 		// должны быть указателями на место, куда требуется скопировать данные и
 		// количество аргументов должно быть точно таким же, как количество
 		// столбцов из таблицы базы данных, возвращаемых вашим SQL запросом.
-		err = rows.Scan(&s.ID, &s.Title, &s.Content, &s.Created, &s.Expires)
+		err = rows.Scan(&s.ID, &s.UserName, &s.Content, &s.Created)
 		if err != nil {
 			return nil, err
 		}

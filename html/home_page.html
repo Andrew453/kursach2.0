@@ -11,7 +11,7 @@
     <body>
 
         <div class="topnav">
-            <a class="active" href=""><font color=black>Cyber</font><font color=white>Putinka</font></a>
+            <a class="active" href="h"><font color=black>Cyber</font><font color=white>Putinka</font></a>
             <a href="sources">Ссылки на источники</a>
             <a href="about">О нас</a>
         </div>
@@ -106,8 +106,8 @@
 
         <section>
             <form name="comment" action="../cmd/handlers.go" method="post">
-                <p></p>Комментарии:<p></p>
-
+                    <p></p><b><font size=4px>Комментарии</font></b><p></p>
+                    <div class="yourcomment">
                 Ваше имя:<p></p>
                 <input type="text" size=40>
 
@@ -119,19 +119,27 @@
             </form>
         </section>
 
+        Пример комментария для Андрея by Артём
+        {{ range .}}
         <section>
-
-            {{range .}}
-                <p>{{.ID}}</p>
-                <p>{{.Title}}</p>
-                <p>{{.Content}}</p>
-            {{end}}
+            
+            <div class="comments">
+                <p></p><font color=blue>{{.UserName}}</font> <font color=gray size=2px>{{.ID}}</font>
+                <ul>
+                    {{.Content}}
+                </ul>
+                <div class="probel"></div>
+            </div>
+        </section>
+        {{end}}
 
         </div>
 
         <footer>
             © 2021-2021 Артём Артёмов, по всем вопросам пишите по адресу artyomovas@student.bmstu.ru
         </footer>
+
+    </div>
     </body>
 </html>
 
