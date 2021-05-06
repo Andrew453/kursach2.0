@@ -18,20 +18,11 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 
 	file := "/home/prokiprok/go/src/kursach2.0/html/home_page.html"
 
-	// ts, err := template.ParseFiles(file)
-
-	// if err != nil {
-	// 	app.serverError(w, err)
-	// 	return
-	// }
-
 	tmpl, err := template.ParseFiles(file)
 	if err != nil {
 		app.errorLog.Fatalln(err)
 	}
 	err = tmpl.ExecuteTemplate(w, "comments", comms)
-	// err = tmpl.Execute(w, nil)
-	// err = ts.Execute(w, nil)
 
 	if err != nil {
 		app.serverError(w, err)
