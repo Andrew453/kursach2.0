@@ -29,8 +29,8 @@ func main() {
 	}
 	defer f.Close()
 
-	infoLog := log.New(f, "INFa\t", log.Ldate|log.Ltime)
-	errorLog := log.New(f, "ERRORы\t", log.Ldate|log.Ldate)
+	infoLog := log.New(f, "INFO\t", log.Ldate|log.Ltime)
+	errorLog := log.New(f, "ERROR\t", log.Ldate|log.Ldate)
 
 	db, err := openDB(*dsn)
 	if err != nil {

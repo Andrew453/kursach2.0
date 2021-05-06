@@ -1,6 +1,8 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+)
 
 func (app *application) routes() *http.ServeMux {
 
@@ -8,6 +10,16 @@ func (app *application) routes() *http.ServeMux {
 	mux.HandleFunc("/h", app.home)
 	mux.HandleFunc("/about", app.about)
 	mux.HandleFunc("/sources", app.sources)
+	mux.HandleFunc("/commentform", func(w http.ResponseWriter, r *http.Request) {
+
+		username := r.FormValue("username")
+		comment := r.FormValue("text_comment")
+		_, err := app.comments.Insert(username, comment)
+		if err != nil {
+			app.errorLog.Println(err)
+		}
+
+	})
 
 	fileServer := http.FileServer(http.Dir("./css"))
 
