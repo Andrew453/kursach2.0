@@ -1,9 +1,14 @@
+/* Контент страницы */
+
 .content {
     padding: 0px 50px 0px 50px;
        color: rgb(51, 51, 51);
        font-size: 16px;
        text-decoration: none;
+       margin-bottom: 100px;
 }
+
+/* Верхняя панель */
 
 .topnav {
     background-color: rgb(51, 51, 51);
@@ -27,10 +32,11 @@
 
 .topnav a.active {
     background-color: #4CAF50;
-    color: f2f2f2;
+    color: #f2f2f2;
 }
 
- /* Sidebar menu */
+/* Боковая панель */
+
  .sidenav {
     float: left;
     width: 320px;
@@ -43,7 +49,7 @@
 .sidenav a {
     padding: 10px;
     font-size: 17px;
-    color: f2f2f2;
+    color: #f2f2f2;
     display: block;
 }
 
@@ -51,6 +57,8 @@
     background-color: #ddd;
     color: rgb(51, 51, 51);
 }
+
+/* Страница с ссылками */
 
 .sources {
     padding: 0px 50px;
@@ -64,6 +72,8 @@
     color:red;
 }
 
+/* Ввод коментария */
+
 .yourcomment {
     background-color: rgb(51, 51, 51);
     color: #f2f2f2;
@@ -72,6 +82,8 @@
     border-radius: 10px;
 }
 
+/* Существующие комментарии */
+
 .comments {
     background-color:rgb(240, 240, 240);
     padding: 3px 30px 10px 30px;
@@ -79,44 +91,55 @@
     border-radius: 10px;
 }
 
+/* Отступ в перед нижней панелью */
+
 .probel {
-    background-color:white;
-    padding: 1px;
+    padding: 60px;
 }
+/* Шрифт h1 */
     
 h1 {
         color: rgb(51, 51, 51);
         font-family:fantasy;
         font-size:40px;
         line-height: normal;
-    }
+}
+
+/* Заголовки */
 
 header {
     text-align: center;
     margin-bottom: 50px;
 }
+
+/* Ссылки */
     
 a { 
     color: rgb(51, 51, 51); 
     text-decoration: none;
     }
+
+/* Перенос строки */
     
 p {
     font-size: 25px;
     text-align: center;
     }
 
+/* Пункты */
+
 li {
-    color:white;
+    color:#f2f2f2;
 }
+
+/* Нижняя панель */
 
 footer {
     position: fixed;
     left: 0;
     bottom: 0;
     background-color: rgb(51, 51, 51);
-    margin-top: 30px;
-    color: f2f2f2;
+    color: #f2f2f2;
     padding: 14px 16px;
     width: 100%;
 }

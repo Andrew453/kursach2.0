@@ -19,6 +19,7 @@ func (app *application) routes() *http.ServeMux {
 			app.errorLog.Println(err)
 		}
 
+		http.Redirect(w, r, "/h#comments", http.StatusFound)
 	})
 
 	fileServer := http.FileServer(http.Dir("./css"))

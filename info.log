@@ -1,4 +1,4 @@
-INFa	2021/05/06 23:59:34 Start server 127.0.0.1 :7777
+INFO	2021/05/07 22:22:30 Start server 127.0.0.1 :7777
 ERRORы	2021/05/06 template: home_page.html:123: function "for" not defined
 <.UserName>: can't evaluate field UserName in type []*models.Comment
 goroutine 18 [running]:
