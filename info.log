@@ -1,4 +1,4 @@
-INFO	2021/05/07 16:54:51 Start server 127.0.0.1 :7777
+INFO	2021/05/07 17:28:53 Start server 127.0.0.1 :7777
 ERROR	2021/05/07 http: panic serving 127.0.0.1:45548: http: multiple registrations for /h
 goroutine 18 [running]:
 net/http.(*conn).serve.func1(0xc0000980a0)
