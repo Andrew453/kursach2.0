@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// Обработка главной страницы
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/h" {
 		app.notFound(w)
@@ -29,6 +30,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Обработка страницы "О нас"
 func (app *application) about(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/about" {
 		app.notFound(w)
@@ -53,6 +55,7 @@ func (app *application) about(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Обработка страницы "Источники"
 func (app *application) sources(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/sources" {
 		app.notFound(w)
