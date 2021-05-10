@@ -8,12 +8,12 @@ import (
 // Обработка главной страницы
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/h" {
-		app.notFound(w)
+		http.NotFound(w, r)
 		return
 	}
 	comms, err := app.comments.GetAll()
 	if err != nil {
-		app.serverError(w, err)
+		app.errorLog.Println(err)
 		return
 	}
 
@@ -21,19 +21,19 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 
 	tmpl, err := template.ParseFiles(file)
 	if err != nil {
-		app.errorLog.Fatalln(err)
+		app.errorLog.Println(err)
 	}
 	err = tmpl.ExecuteTemplate(w, "comments", comms)
 
 	if err != nil {
-		app.serverError(w, err)
+		app.errorLog.Println(err)
 	}
 }
 
 // Обработка страницы "О нас"
 func (app *application) about(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/about" {
-		app.notFound(w)
+		http.NotFound(w, r)
 		return
 	}
 
@@ -44,21 +44,21 @@ func (app *application) about(w http.ResponseWriter, r *http.Request) {
 	ts, err := template.ParseFiles(files...)
 
 	if err != nil {
-		app.serverError(w, err)
+		app.errorLog.Println(w, err)
 		return
 	}
 
 	err = ts.Execute(w, nil)
 
 	if err != nil {
-		app.serverError(w, err)
+		app.errorLog.Println(w, err)
 	}
 }
 
 // Обработка страницы "Источники"
 func (app *application) sources(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/sources" {
-		app.notFound(w)
+		http.NotFound(w, r)
 		return
 	}
 
@@ -69,13 +69,13 @@ func (app *application) sources(w http.ResponseWriter, r *http.Request) {
 	ts, err := template.ParseFiles(files...)
 
 	if err != nil {
-		app.serverError(w, err)
+		app.errorLog.Println(w, err)
 		return
 	}
 
 	err = ts.Execute(w, nil)
 
 	if err != nil {
-		app.serverError(w, err)
+		app.errorLog.Println(w, err)
 	}
 }
