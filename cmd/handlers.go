@@ -11,7 +11,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 		app.notFound(w)
 		return
 	}
-	comms, err := app.comments.Latest()
+	comms, err := app.comments.GetAll()
 	if err != nil {
 		app.serverError(w, err)
 		return
